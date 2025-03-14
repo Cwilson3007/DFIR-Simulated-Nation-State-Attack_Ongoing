@@ -1,29 +1,31 @@
-# Investigating a Nation-State Supply Chain Attack with Multi-Layered Evasion Techniques
+# 🛠️ Investigating a Nation-State Supply Chain Attack with Multi-Layered Evasion Techniques
 
-## Scenario
-> A multinational corporation has suffered a stealthy, year-long supply chain compromise 
-> orchestrated by a nation-state threat actor. The attack has infiltrated thousands of 
-> endpoints across multiple regions, leveraging advanced evasion techniques to remain undetected.
+## 🌍 Scenario
+ A multinational corporation has been compromised by a **nation-state actor** 🕵️.
+$ The breach has persisted **undetected for over a year**, affecting **thousands of endpoints**.
+$ Advanced **evasion techniques** were used to cover tracks. Your mission: **Investigate & Contain**.
 
-# Adversary Tactics:
-$ Living-off-the-Land (LotL) - Uses legitimate system tools to evade detection
-$ Encrypted C2 Communications - Hides traffic via DNS tunneling, domain fronting
-$ Anti-Forensic Measures - Timestomping, log wiping, process injection
-$ Ransomware Distraction - Encrypts systems to divert attention from data exfiltration
+# 🚨 Adversary Tactics:
+ 🏴‍☠️ Living-off-the-Land (LotL)  → Abusing system tools (PowerShell, WMI) for stealth.
+$ 🔒 Encrypted C2 Channels       → DNS tunneling, domain fronting, covert HTTP/S beaconing.
+$ 📆 Timestomping & Log Wiping   → Modifying timestamps & deleting forensic traces.
+$ 💣 Ransomware Distraction      → Encrypting systems to divert incident response teams.
 
-## Objective
-# You are tasked with leading the forensic investigation:
-$ Identify the initial attack vector       # Determine how the attacker compromised the supply chain
-$ Map the full scope of the breach         # Track lateral movement and persistence techniques
-$ Attribute the attack                     # Analyze TTPs to identify the threat actor
-$ Provide actionable remediation            # Develop defense strategies to prevent future incidents
+## 🔍 Objective
+ 🎯 **Your task**: Lead the forensic investigation and uncover the full attack chain.
+    ├── 🔹 Identify the **initial entry point** (Was it a trojanized update? A supply chain backdoor?)
+    ├── 🔹 Map the **scope of compromise** (Which systems? Lateral movement paths?)
+    ├── 🔹 Attribute the **threat actor** (APT, financially motivated group, or insider?)
+    ├── 🔹 Provide **actionable defense strategies** (How do we prevent this next time?)
 
-## Tools & Techniques
-# The investigation will involve:
-$ Memory forensics   - Using Volatility for RAM analysis
-$ Malware analysis   - Reversing engineered samples via REMnux
-$ Network forensics  - Inspecting PCAPs with Wireshark and Zeek
-$ Anti-forensics detection - Identifying evasion techniques and log tampering
+## 🛠️ Tools & Techniques
+ 🖥️ Memory Forensics  → Volatility 🧠 for RAM analysis.
+$ 🔬 Malware Analysis   → REMnux 🔎 for reverse engineering suspicious binaries.
+$ 🌐 Network Forensics  → Wireshark 📡 & Zeek to analyze C2 traffic.
+$ 📜 Log Analysis       → Hunting for **deleted logs & modified timestamps**.
 
-> This project simulates a real-world forensic case study using a controlled lab 
-> environment. The findings will be documented and analyzed for a structured report.
+## 📝 Notes:
+ This project **simulates a real-world forensic case study** 🎭.
+$ Findings will be **documented, analyzed, and structured** into a comprehensive report 📑.
+$ All results will be **organized for a polished GitHub portfolio showcase** 🚀.
+
