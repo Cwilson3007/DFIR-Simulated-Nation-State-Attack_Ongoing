@@ -113,16 +113,26 @@ $ All results will be **organized for a polished GitHub portfolio showcase** �
 
 📸 ![VM Downloads](screenshots/1_vm_downloads.png)  
 📌 *Prebuilt VM images downloaded.*
+
+Explanation: This screenshot shows the download page for the prebuilt VM images (e.g., Kali Linux, SIFT Workstation). I chose prebuilt images to save time and ensure consistency, as these are widely used in DFIR communities and come with preinstalled tools tailored for forensics and attack simulation.
+
 📸 ![VM Import](screenshots/2_vm_import.png)  
 📌 *Virtual machines successfully imported into VirtualBox.*
+Explanation: Displays the VirtualBox interface during the import of the Kali Linux OVA file. Importing OVAs ensures all VMs start with a clean, standardized configuration, reducing setup errors.
+
 📸 ![VM Settings](screenshots/3_vm_settings.png)  
 📌 *Configured VM settings for memory, CPU, and network.*
+Shows the VirtualBox settings for the Windows 10 VM, including allocated memory (4GB), CPU (2 cores), and network configuration. I allocated sufficient resources to handle forensic tools and attack simulations without performance issues.
 📸 ![Network Configuration](screenshots/4_network_config.png)  
 📌 *NAT Network configured to allow communication between VMs.*
+
+Explanation: Captures the NAT Network configuration in VirtualBox, confirming that all VMs are on the <HOST-IP> subnet. This setup isolates the lab from my host machine and the internet, ensuring safety while allowing inter-VM communication for the attack simulation.
 
 ## PHASE 3: ATTACK SIMULATION & DEPLOYMENT ##
 ![Attack Scenario Overview](screenshots/7_attack_scenario_overview.png)  
 📌 *Flowchart illustrating the entire nation-state supply chain attack process, from initial compromise to forensic evasion techniques.*
+
+Explanation: This flowchart illustrates the entire nation-state supply chain attack process, from initial compromise to forensic evasion. I created it to visualize the attack chain and ensure my simulation covered all key stages, making it easier to explain to readers and guide my forensic analysis later.
 
 #### **Attack Flow Breakdown**
 The above **flowchart** provides a structured view of the **advanced supply chain attack**:
@@ -175,6 +185,7 @@ python fake_update.py
  ![Fake Vendor Update Installer](screenshots/8_fake_vendor_update_installer.png)  
 📌 *CMD running the fake software update script (fake_update.py).*
 
+Explanation: Shows the command prompt running fake_update.py, displaying “Updating Software...” and “Update Successful!” messages. This script mimics a legitimate software update to make the attack more believable.
 
 ✅ Step 2: Convert Fake Update to Executable
 ```
@@ -184,6 +195,8 @@ mv dist/fake_update.exe C:\IT_Updates\Windows_Update_KB5023152.exe
 
 ![Fake Update EXE Created](screenshots/9_fake_update_exe_created.png)  
 📌 *CMD showing successful compilation of fake_update.exe.*
+
+Explanation: Displays the command prompt after running PyInstaller, confirming the creation of fake_update.exe, and the renamed file in C:\IT_Updates\. Naming it Windows_Update_KB5023152.exe makes it appear as an official Microsoft update, increasing its believability.
 
 ✅ Step 3: IT Department Access
 ```
@@ -196,6 +209,8 @@ Get-WmiObject -Query "SELECT * FROM Win32_QuickFixEngineering" | Format-Table -A
 
 ![IT Department Access](screenshots/10_IT_department_access.png)  
 📌 *PowerShell output displaying local security policies, installed software, and updates.*
+
+Explanation: Displays the command prompt after running PyInstaller, confirming the creation of fake_update.exe, and the renamed file in C:\IT_Updates\. Naming it Windows_Update_KB5023152.exe makes it appear as an official Microsoft update, increasing its believability.
 
 ✅ Step 4: Modify IT Deployment Script
 ```
@@ -218,6 +233,8 @@ powershell -ExecutionPolicy Bypass -File update.ps1
 ![Fake IT Deployment](screenshots/11_fake_update_IT_deployment.png)  
 📌 *PowerShell executing the IT department deployment script (update.ps1).*
 
+Explanation: Captures the PowerShell window executing update.ps1, downloading and running the fake update. This demonstrates the deployment mechanism an attacker might use within an IT environment.
+
 ✅ Step 5: Verify Execution on Victim Machine
 ```
 dir C:\ProgramData\
@@ -227,6 +244,8 @@ Get-EventLog -LogName System | Select-String "Windows Update"
 
 ![Fake Update Execution](screenshots/12_fake_update_execution.png)  
 📌 *CMD confirming the execution of Windows_Update_KB5023152.exe on the victim machine.*
+
+Explanation: Shows the command prompt output listing files in C:\ProgramData\, running processes (including the fake update), and event logs mentioning “Windows Update.” This confirms the payload executed as intended.
 
 ✅ Step 6: Modify Metadata to Hide Attack
 ```
@@ -238,6 +257,8 @@ Get-EventLog -LogName System | Select-String "Windows Update"
 ![Fake Update Metadata Forged](screenshots/13_fake_update_metadata_forged.png)  
 📌 *File Explorer displaying the modified timestamps of the fake update to blend in.*
 
+Explanation: Displays File Explorer properties for Windows_Update_KB5023152.exe, showing the modified timestamps (Dec 1, 2023). This makes the file appear older and less suspicious to forensic investigators.
+
 ✅ Step 7: Covering Tracks
 ```
 del update.ps1
@@ -246,3 +267,5 @@ Remove-Item -Path (Get-PSReadlineOption).HistorySavePath
 
 ![Attack Summary - Covering Tracks](screenshots/14_fake_update_attack_summary.png)  
 📌 *CMD showing log deletion and cleanup to erase forensic traces.*
+
+Explanation: Shows the command prompt after deleting the deployment script and clearing PowerShell history. This step removes evidence of the attack’s delivery mechanism and command history.
